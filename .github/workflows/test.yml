@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: dnw2022/renew-cert-composite-action@v0.30
+        uses: dnw2022/renew-cert-composite-action@v0.31
         with:
           organization: "dnw2022"

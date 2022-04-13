@@ -1,1 +1,1 @@
-echo "Goodbye 0.30"
+echo "Goodbye 0.31"
