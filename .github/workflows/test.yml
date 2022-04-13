@@ -7,12 +7,10 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Renew certificate
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: dnw2022/renew-cert-composite-action@v0.23
+        uses: dnw2022/renew-cert-composite-action@v0.24
         with:
-          who-to-greet: "Mona the Octocat"
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
+          organization: "dnw2022"
