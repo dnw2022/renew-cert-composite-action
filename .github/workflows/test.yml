@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to test the action
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Renew certificate
+        uses: dnw2022/renew-cert-composite-action@v1
+        with:
+          organization: "dnw2022"
+          cert-secret-name: "CERT_PFX_BASE64"
+          github-token: ${{ secrets.GHUB_TOKEN }}
