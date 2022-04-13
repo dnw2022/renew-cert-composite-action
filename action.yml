@@ -17,7 +17,7 @@ runs:
       shell: bash
     - run: ls -la
       shell: bash
-    - run: test.sh
+    - run: goodbye.sh
       shell: bash
       # env:
       #   ORGANIZATION: ${{ inputs.organization }}
