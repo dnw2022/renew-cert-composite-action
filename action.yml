@@ -19,6 +19,6 @@ runs:
       shell: bash
     - run: test.sh
       shell: bash
-      env:
-        ORGANIZATION: ${{ inputs.organization }}
-        CERT_SECRET_NAME: ${{ inputs.cert-secret-name }}
+      # env:
+      #   ORGANIZATION: ${{ inputs.organization }}
+      #   CERT_SECRET_NAME: ${{ inputs.cert-secret-name }}
