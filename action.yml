@@ -1,13 +1,23 @@
-name: "Hello World"
-description: "Greet someone"
+name: "Renew Cloudflare Certificate"
+description: "Checks if a certificate is available. If none is available or if the certificate expires within the next number of specified days it renews the certificate."
 inputs:
-  organization: # id of input
-    description: "Organization"
+  organization:
+    description: "The organization"
+    required: true
+  cert-secret-name:
+    description: "The name of the organizational level secret where to store the base64 encoded pfx file"
+    required: true
+  github-token:
+    description: "A github token that has enough rights to read- and write organization level secrets"
     required: true
 runs:
   using: "composite"
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: goodbye.sh
+    - run: test.sh
       shell: bash
+      env:
+        ORGANIZATION: ${{ inputs.organization }}
+        CERT_SECRET_NAME: ${{ inputs.cert-secret-name }}
+        CERT_PFX_BASE64: ${{ secrets.CERT_PFX_BASE64 }
