@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Renew certificate
-        uses: dnw2022/renew-cert-composite-action@latest
+        uses: dnw2022/renew-cert-composite-action
         with:
           organization: "dnw2022"
           cert-secret-name: "CERT_PFX_BASE64"
