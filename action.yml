@@ -1,0 +1,17 @@
+name: "Renew Cloudflare Certificate"
+description: "Checks if a certificate is available. If none is available or if the certificate expires within the next number of specified days it renews the certificate."
+inputs:
+  organization:
+    description: "The organization"
+    required: true
+  cert-secret-name:
+    description: "The name of the organizational level secret where to store the base64 encoded pfx file"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: test.sh
+      shell: bash
+      env:
+        ORGANIZATION: ${{ inputs.organization }}
+        CERT_SECRET_NAME: ${{ inputs.cert-secret-name }}
