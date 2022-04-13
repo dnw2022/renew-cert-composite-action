@@ -11,8 +11,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.organization }}.
-      shell: bash
+    # - run: echo Hello ${{ inputs.organization }}.
+    #   shell: bash
     # - id: random-number-generator
     #   run: echo "::set-output name=random-id::$(echo $RANDOM)"
     #   shell: bash
