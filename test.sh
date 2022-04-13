@@ -1,4 +1,4 @@
-echo "Hi there 0.25"
+echo "Hi there 0.26"
 # echo "ORGANIZATION=$ORGANIZATION"
 # echo "CERT_SECRET_NAME=$CERT_SECRET_NAME"
 # echo "???=$CERT_PFX_BASE64"
