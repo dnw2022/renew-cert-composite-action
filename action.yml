@@ -19,7 +19,7 @@ inputs:
   cert-email:
     description: "The email address that is used to notify you when the certificate is expiring"
     required: true
-  CERT_PWD:
+  cert-pwd:
     description: "The password of the pfx file"
     required: true
   cert-domain:
