@@ -11,5 +11,7 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - run: echo Hello ${{ inputs.organization }}.
+      shell: bash
     - run: goodbye.sh
       shell: bash
