@@ -17,13 +17,15 @@ jobs:
 
       - name: Tag latest commit and trigger
         run: |-
-          git config user.email "jeroen_bijlsma@yahoo.com"
-          git config user.name "jbijlsma"
-          git --version
+          git tag
 
-          TAG=$(git describe --tags)
+          # git config user.email "jeroen_bijlsma@yahoo.com"
+          # git config user.name "jbijlsma"
+          # git --version
 
-          echo "TAG=$TAG"
+          # TAG=$(git describe --tags)
+
+          # echo "TAG=$TAG"
 
           # VERSION_PARTS=(${TAG//\./ })
           # major=${VERSION_PARTS[0]}

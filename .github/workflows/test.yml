@@ -14,7 +14,7 @@ jobs:
         run: -|
 
       - name: Renew certificate
-        uses: dnw2022/renew-cert-composite-action@__RENEW_CERTS_ACTION_VERSION__
+        uses: dnw2022/renew-cert-composite-action@latest
         with:
           organization: "dnw2022"
           github-token: ${{ secrets.GHUB_TOKEN }}
