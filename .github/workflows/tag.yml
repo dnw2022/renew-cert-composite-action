@@ -7,6 +7,8 @@ jobs:
     name: A job to test the action
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: "0"
 
       # - name: Bump version and push tag
       #   uses: mathieudutour/github-tag-action@v6.0
