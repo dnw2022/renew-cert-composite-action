@@ -1,0 +1,38 @@
+on:
+  workflow_dispatch:
+  [push]
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to test the action
+    steps:
+      - uses: actions/checkout@v3
+
+      # - name: Bump version and push tag
+      #   uses: mathieudutour/github-tag-action@v6.0
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag latest commit and trigger
+        run: |-
+          TAG=$(git describe --tags)
+          VERSION_PARTS=(${TAG//\./ })
+          major=${VERSION_PARTS[0]}
+          minor=${VERSION_PARTS[1]}
+          patch=${VERSION_PARTS[2]}
+          echo "Current patch version: $patch"
+
+          nextPatch=$[patch + 1]
+          nextVersion="$major.$minor.$patch"
+
+          sed -i "s/__RENEW_CERTS_ACTION_VERSION__/$nextVersion/g" ./.github/workflows/test.yml
+          git add .
+          git commit --amend --no-edit
+
+          git tag -a -m "v$nextVersion" $nextVersion
+          git push --follow-tags
+
+      # - name: Trigger test workflow
+      #   run:
+      #     -|
+      # gh workflow run test.yml --ref ${GITHUB_REF##*/}

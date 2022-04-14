@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
@@ -10,8 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Tag latest commit
+        run: -|
+
       - name: Renew certificate
-        uses: dnw2022/renew-cert-composite-action@v0.44
+        uses: dnw2022/renew-cert-composite-action@__RENEW_CERTS_ACTION_VERSION__
         with:
           organization: "dnw2022"
           github-token: ${{ secrets.GHUB_TOKEN }}
