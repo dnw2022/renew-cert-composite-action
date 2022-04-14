@@ -10,10 +10,10 @@ jobs:
         with:
           fetch-depth: "0"
 
-      # - name: Bump version and push tag
-      #   uses: mathieudutour/github-tag-action@v6.0
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bump version and push tag
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Tag latest commit and trigger
         run: |-
