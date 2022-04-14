@@ -44,7 +44,7 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         CLOUDFLARE_API_KEY: ${{ inputs.cloudflare-api-key }}
         CERT_SECRET_NAME: ${{ inputs.cert-secret-name }}
-        CERT_THUMBPRINT_SECRET_NAME: ${{ inputs.cert-thumprint-secret-name }}
+        CERT_THUMBPRINT_SECRET_NAME: ${{ inputs.cert-thumbprint-secret-name }}
         CERT_PFX_BASE64: ${{ inputs.cert-pfx-base64 }}
         CERT_EMAIL: ${{ inputs.cert-email }}
         CERT_PWD: ${{ inputs.cert-pwd }}
