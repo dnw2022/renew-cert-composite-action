@@ -7,3 +7,10 @@ echo "CERT_EMAIL=$CERT_EMAIL"
 echo "CERT_PWD=$CERT_PWD"
 echo "CERT_DOMAIN=$CERT_DOMAIN"
 echo "CERT_STAGING=$CERT_STAGING"
+
+if [[ $CERT_STAGING = true ]]
+then
+  echo "Issue staging certificate"
+else
+  echo "Issue production certificate"
+fi
