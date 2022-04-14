@@ -15,6 +15,10 @@ jobs:
 
       - name: Tag latest commit and trigger
         run: |-
+          git config user.email "jeroen_bijlsma@yahoo.com"
+          git config user.name "jbijlsma"
+          git --version
+
           TAG=$(git describe --tags)
           VERSION_PARTS=(${TAG//\./ })
           major=${VERSION_PARTS[0]}
