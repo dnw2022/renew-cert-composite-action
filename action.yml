@@ -34,7 +34,7 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: test.sh
+    - run: renew_certs.sh
       shell: bash
       env:
         ORGANIZATION: ${{ inputs.organization }}
