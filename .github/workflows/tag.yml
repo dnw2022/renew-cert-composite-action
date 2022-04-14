@@ -22,21 +22,24 @@ jobs:
           git --version
 
           TAG=$(git describe --tags)
-          VERSION_PARTS=(${TAG//\./ })
-          major=${VERSION_PARTS[0]}
-          minor=${VERSION_PARTS[1]}
-          patch=${VERSION_PARTS[2]}
-          echo "Current patch version: $patch"
 
-          nextPatch=$[patch + 1]
-          nextVersion="$major.$minor.$patch"
+          echo "TAG=$TAG"
 
-          sed -i "s/__RENEW_CERTS_ACTION_VERSION__/$nextVersion/g" ./.github/workflows/test.yml
-          git add .
-          git commit --amend --no-edit
+          # VERSION_PARTS=(${TAG//\./ })
+          # major=${VERSION_PARTS[0]}
+          # minor=${VERSION_PARTS[1]}
+          # patch=${VERSION_PARTS[2]}
+          # echo "Current patch version: $patch"
 
-          git tag -a -m "v$nextVersion" $nextVersion
-          git push --follow-tags
+          # nextPatch=$[patch + 1]
+          # nextVersion="$major.$minor.$patch"
+
+          # sed -i "s/__RENEW_CERTS_ACTION_VERSION__/$nextVersion/g" ./.github/workflows/test.yml
+          # git add .
+          # git commit --amend --no-edit
+
+          # git tag -a -m "v$nextVersion" $nextVersion
+          # git push --follow-tags
 
       # - name: Trigger test workflow
       #   run:
