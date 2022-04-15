@@ -17,6 +17,7 @@ jobs:
 
     steps:
       - name: Renew certificate
+        id: renew-cert
         uses: dnw2022/renew-cert-composite-action@latest
         with:
           organization: "dnw2022"
@@ -29,3 +30,6 @@ jobs:
           cert-pwd: ${{ secrets.CERT_PWD }}
           cert-domain: "*.dotnet-works.com"
           use-staging: true
+
+      - run: |-
+          echo Certificate renewed ${{ steps.renew-cert.outputs.certificate-renewed }}
