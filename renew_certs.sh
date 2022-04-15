@@ -87,9 +87,12 @@ then
   rm ./cert.pfx
   rm ./cert.base64
 
+  echo "::set-output name=certificate-renewed::$(echo true)"
+
   # gh workflow run azure-app-service-deploy.yml --ref master
 else
   echo "No renewal needed yet"
+  echo "::set-output name=certificate-renewed::$(echo false)"
 fi
 
 exit 0
