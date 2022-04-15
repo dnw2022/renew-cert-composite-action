@@ -32,4 +32,4 @@ jobs:
           use-staging: true
 
       - run: |-
-          echo Certificate renewed ${{ steps.renew-cert.outputs.certificate-renewed }}
+          echo ${{ steps.renew-cert.outputs.certificate-renewed }}
