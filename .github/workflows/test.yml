@@ -2,11 +2,13 @@ name: Test
 
 on:
   workflow_dispatch:
-  # workflow_call:
   workflow_run:
     workflows: ["Tag"]
     types:
       - completed
+  push:
+    branches:
+      - "master"
 
 jobs:
   test_job:
@@ -15,7 +17,6 @@ jobs:
 
     steps:
       - name: Renew certificate
-        id: renew-certificate
         uses: dnw2022/renew-cert-composite-action@latest
         with:
           organization: "dnw2022"
@@ -28,6 +29,3 @@ jobs:
           cert-pwd: ${{ secrets.CERT_PWD }}
           cert-domain: "*.dotnet-works.com"
           use-staging: true
-      - run: |-
-        echo "Certificate renewed: ${{ steps.renew-certificate.outputs.certificate-renewed }}"
-        shell: bash
