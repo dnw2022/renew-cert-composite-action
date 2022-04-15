@@ -57,5 +57,5 @@ runs:
         CERT_DOMAIN: ${{ inputs.cert-domain }}
         CERT_STAGING: ${{ inputs.use-staging }}
 
-    - run: echo "Certificate renewed ${{ steps.renew-cert.outputs.certificate-renewed }}"
+    - run: echo Certificate renewed ${{ steps.renew-cert.outputs.certificate-renewed }}
       shell: bash
