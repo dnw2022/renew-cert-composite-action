@@ -1,0 +1,52 @@
+name: "Renew Cloudflare Certificate"
+description: "Checks if a certificate is available. If none is available or if the certificate expires within the next number of specified days it renews the certificate."
+inputs:
+  organization:
+    description: "The organization to use for storing secrets"
+    required: true
+  github-token:
+    description: "A github token that has enough rights to read- and write organization level secrets"
+    required: true
+  cloudflare-api-key:
+    description: "The Cloudflare API key"
+    required: true
+  cert-secret-name:
+    description: "The name of the organizational level secret where to store the base64 encoded pfx file"
+    required: true
+  cert-thumbprint-secret-name:
+    description: "The name of the organizational level secret where to store the thumbprint of the pfx file is stored"
+    required: true
+  cert-pfx-base64:
+    description: "The base64 encoded pfx file of the certificate"
+    required: true
+  cert-email:
+    description: "The email address that is used to notify you when the certificate is expiring"
+    required: true
+  cert-pwd:
+    description: "The password of the pfx file"
+    required: true
+  cert-domain:
+    description: "The domain for which to issue a certificate"
+    required: true
+  use-staging:
+    description: "Whether to use the Letsencrypt staging environment to issue certificates"
+    required: true
+    default: "true"
+runs:
+  using: "composite"
+  steps:
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - run: renew_certs.sh
+      shell: bash
+      env:
+        ORGANIZATION: ${{ inputs.organization }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        CLOUDFLARE_API_KEY: ${{ inputs.cloudflare-api-key }}
+        CERT_SECRET_NAME: ${{ inputs.cert-secret-name }}
+        CERT_THUMBPRINT_SECRET_NAME: ${{ inputs.cert-thumbprint-secret-name }}
+        CERT_PFX_BASE64: ${{ inputs.cert-pfx-base64 }}
+        CERT_EMAIL: ${{ inputs.cert-email }}
+        CERT_PWD: ${{ inputs.cert-pwd }}
+        CERT_DOMAIN: ${{ inputs.cert-domain }}
+        CERT_STAGING: ${{ inputs.use-staging }}
