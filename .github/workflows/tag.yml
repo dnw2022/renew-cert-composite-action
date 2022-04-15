@@ -3,6 +3,8 @@ name: Tag
 on:
   workflow_dispatch:
   push:
+    branches:
+      - "develop"
 
 jobs:
   tag_job:
